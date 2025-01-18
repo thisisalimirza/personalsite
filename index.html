@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Designer & Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile">
+                <img src="assets/img/twitter-profile-pic.jpg" alt="Profile Picture" class="profile-img">
+                <h1>I'm Ali -- a medical student, entrepreneur, and creator.</h1>
+                <p class="bio">I started by helping businesses grow through marketing, and now I’m exploring how medicine, technology, and entrepreneurship can solve bigger problems. I’m passionate about building tools that improve lives, and make an impact. I’ve lived in 5 countries, which gives me a global perspective on everything I do.</p>
+            </div>
+        </header>
+
+        <section class="creating">
+            <h2>Creating</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-wrapper">
+                            <i class="project-icon fas fa-bullhorn"></i>
+                            <h3 class="project-title">JANUS Marketing</h3>
+                        </div>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-marketing"><i class="fas fa-video"></i> Content Creation</span>
+                        <span class="badge badge-marketing"><i class="fas fa-chart-line"></i> Growth</span>
+                    </div>
+                    <p class="project-description">A creative agency that generates endless graphic and video content for internet businesses to use in advertising or organic posts.</p>
+                    <a href="https://janusny.com" target="_blank" class="project-link">Learn more</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-wrapper">
+                            <i class="project-icon fas fa-heartbeat"></i>
+                            <h3 class="project-title">CareGuided</h3>
+                        </div>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-health"><i class="fas fa-user-md"></i> Healthcare</span>
+                        <span class="badge badge-health"><i class="fas fa-book-reader"></i> Health Literacy</span>
+                    </div>
+                    <p class="project-description">A health literacy assessment tool for clinicians and patients alike. Rapidly determine your patient's health literacy levels and adjust your counseling to meet your patient where they are.</p>
+                    <a href="https://careguided.com" target="_blank" class="project-link">Learn more</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-wrapper">
+                            <i class="project-icon fas fa-graduation-cap"></i>
+                            <h3 class="project-title">AlmostMed</h3>
+                        </div>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-education"><i class="fas fa-stethoscope"></i> Medical Education</span>
+                        <span class="badge badge-education"><i class="fas fa-users"></i> Mentorship</span>
+                    </div>
+                    <p class="project-description">Supporting premeds and medical students achieve their unique goals through personalized guidance and resources.</p>
+                    <a href="https://tally.so/r/wQ85y7" target="_blank" class="project-link">Learn more</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title-wrapper">
+                            <i class="project-icon fas fa-star"></i>
+                            <h3 class="project-title">The Bara Society</h3>
+                        </div>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-community"><i class="fas fa-crown"></i> Elite Network</span>
+                        <span class="badge badge-community"><i class="fas fa-rocket"></i> High Impact</span>
+                    </div>
+                    <p class="project-description">An invite-only professional development society for highly ambitious, high-agency college graduates seeking to make an impact on the world.</p>
+                    <a href="#" class="project-link" onclick="openBaraModal(event)">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for Bara Society -->
+        <div class="modal-overlay" id="baraModal">
+            <div class="modal">
+                <button class="modal-close" onclick="closeBaraModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-header">
+                    <h3 class="modal-title">Interested in The Bara Society?</h3>
+                </div>
+                <div class="modal-content">
+                    <p>The Bara Society is an exclusive, invite-only network. If you'd like to learn more about membership opportunities, please reach out to me directly through any of the social links below.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="newsletter">
+            <h2>Newsletter</h2>
+            <p>A brief description of your newsletter or updates.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe →</button>
+            </form>
+        </section>
+
+        <section class="resources">
+            <h2>Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Resource One <span class="external-link">↗</span></h3>
+                    <p>Description of your first resource.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Resource Two <span class="external-link">↗</span></h3>
+                    <p>Description of your second resource.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="elsewhere">
+            <h2>Elsewhere</h2>
+            <div class="social-links">
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+
+        <footer>
+            <nav>
+                <a href="#blog">Blog</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <p class="copyright">© 2024 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function openBaraModal(event) {
+            event.preventDefault();
+            document.getElementById('baraModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBaraModal() {
+            document.getElementById('baraModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('baraModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeBaraModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && document.getElementById('baraModal').classList.contains('active')) {
+                closeBaraModal();
+            }
+        });
+    </script>
+</body>
+</html> 
