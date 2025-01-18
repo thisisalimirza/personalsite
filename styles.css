@@ -472,4 +472,15 @@ footer a:hover {
 .modal.active,
 .modal-overlay.active {
     display: flex;
+}
+
+#type-text {
+    border-right: 2px solid #000;
+    padding-right: 5px;
+    animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #000; }
 } 
