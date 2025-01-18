@@ -21,6 +21,7 @@
             <h2>Creating</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <a href="https://janusny.com" target="_blank" class="card-link"></a>
                     <div class="project-header">
                         <div class="project-title-wrapper">
                             <i class="project-icon fas fa-bullhorn"></i>
@@ -35,6 +36,7 @@
                     <a href="https://janusny.com" target="_blank" class="project-link">Learn more</a>
                 </div>
                 <div class="project-card">
+                    <a href="https://careguided.com" target="_blank" class="card-link"></a>
                     <div class="project-header">
                         <div class="project-title-wrapper">
                             <i class="project-icon fas fa-heartbeat"></i>
@@ -49,6 +51,7 @@
                     <a href="https://careguided.com" target="_blank" class="project-link">Learn more</a>
                 </div>
                 <div class="project-card">
+                    <a href="https://tally.so/r/wQ85y7" target="_blank" class="card-link"></a>
                     <div class="project-header">
                         <div class="project-title-wrapper">
                             <i class="project-icon fas fa-graduation-cap"></i>
@@ -62,7 +65,7 @@
                     <p class="project-description">Supporting premeds and medical students achieve their unique goals through personalized guidance and resources.</p>
                     <a href="https://tally.so/r/wQ85y7" target="_blank" class="project-link">Learn more</a>
                 </div>
-                <div class="project-card">
+                <div class="project-card" onclick="openBaraModal(event)">
                     <div class="project-header">
                         <div class="project-title-wrapper">
                             <i class="project-icon fas fa-star"></i>
@@ -74,7 +77,7 @@
                         <span class="badge badge-community"><i class="fas fa-rocket"></i> High Impact</span>
                     </div>
                     <p class="project-description">An invite-only professional development society for highly ambitious, high-agency college graduates seeking to make an impact on the world.</p>
-                    <a href="#" class="project-link" onclick="openBaraModal(event)">Learn more</a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation()">Learn more</a>
                 </div>
             </div>
         </section>
@@ -107,12 +110,20 @@
             <h2>Resources</h2>
             <div class="resources-grid">
                 <div class="resource-card">
-                    <h3>Resource One <span class="external-link">↗</span></h3>
-                    <p>Description of your first resource.</p>
+                    <a href="https://janusny.com/#resources" target="_blank" class="card-link"></a>
+                    <div class="resource-header">
+                        <h3 class="resource-title">Marketing A-Z Growth Guide</h3>
+                    </div>
+                    <p class="resource-description">Everything you need to know to get started with growing your business online with proven methods and frameworks.</p>
+                    <a href="https://janusny.com/#resources" target="_blank" class="project-link">Learn more</a>
                 </div>
                 <div class="resource-card">
-                    <h3>Resource Two <span class="external-link">↗</span></h3>
-                    <p>Description of your second resource.</p>
+                    <a href="https://thisisalimirza.github.io/endlessideas/" target="_blank" class="card-link"></a>
+                    <div class="resource-header">
+                        <h3 class="resource-title">Endless Idea Generator</h3>
+                    </div>
+                    <p class="resource-description">Get infinite content marketing ideas for your business. Implement yourself, or reach out to us at JANUS to do it for you.</p>
+                    <a href="https://thisisalimirza.github.io/endlessideas/" target="_blank" class="project-link">Learn more</a>
                 </div>
             </div>
         </section>

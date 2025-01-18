@@ -88,6 +88,23 @@ h2 {
     transition: all 0.3s ease;
     background-color: var(--background-color);
     box-shadow: var(--card-shadow);
+    position: relative;
+    cursor: pointer;
+}
+
+.project-card > a.card-link, .resource-card > a.card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.project-link {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .project-card:hover, .resource-card:hover {
@@ -483,4 +500,37 @@ footer a:hover {
 @keyframes blink {
     from, to { border-color: transparent }
     50% { border-color: #000; }
+}
+
+/* Resource Cards */
+.resource-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.resource-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--primary-color);
+}
+
+.resource-description {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.resource-card {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .resource-title {
+        font-size: 1.2rem;
+    }
 } 
