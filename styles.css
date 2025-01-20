@@ -447,9 +447,9 @@ footer a:hover {
 }
 
 .project-icon {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    opacity: 0.9;
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+    color: black;
 }
 
 .project-badges {
@@ -565,36 +565,94 @@ footer a:hover {
     50% { border-color: #000; }
 }
 
-/* Resource Cards */
+/* Resource Cards - Distinct Style */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.resource-card {
+    padding: 1.75rem;
+    background-color: var(--subtle-bg);
+    border: none;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.resource-card:hover {
+    background-color: #E3F0FF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.08);
+}
+
+.resource-card:hover .resource-title,
+.resource-card:hover .resource-description,
+.resource-card:hover .project-icon,
+.resource-card:hover .project-link {
+    color: var(--accent-color);
+}
+
 .resource-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
 .resource-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0;
     color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
 .resource-description {
     color: var(--secondary-color);
     font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+    margin-bottom: 1.25rem;
+    transition: color 0.3s ease;
 }
 
-.resource-card {
-    display: flex;
-    flex-direction: column;
+.resource-card .project-icon {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.resource-card .project-link {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resource-card .project-link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+}
+
+.resource-card:hover .project-link::after {
+    transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
-    .resource-title {
-        font-size: 1.2rem;
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-card {
+        padding: 1.5rem;
     }
 }
 
