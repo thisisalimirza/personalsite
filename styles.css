@@ -61,6 +61,7 @@ body {
     padding: 0.5rem 0;
     position: relative;
     transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-link::after {
@@ -88,15 +89,16 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 3rem 4rem;
 }
 
 /* Header Styles */
 header {
-    margin: 3rem 0 5rem;
+    margin: 3rem auto 5rem;
     text-align: center;
+    max-width: 800px;
 }
 
 .profile-img {
@@ -136,64 +138,92 @@ h2 {
     color: var(--secondary-color);
 }
 
-/* Project and Resource Cards */
+/* Projects and Resources Grid */
 .projects-grid, .resources-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .project-card, .resource-card {
-    padding: 2rem;
+    padding: 2.5rem;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 16px;
     transition: all 0.3s ease;
     background-color: var(--background-color);
     box-shadow: var(--card-shadow);
-    position: relative;
-    cursor: pointer;
-}
-
-.project-card > a.card-link, .resource-card > a.card-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-.project-link {
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover, .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     border-color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-h3 {
-    font-size: 1.2rem;
+/* Resource Cards Specific */
+.resource-card {
+    background-color: var(--subtle-bg);
+}
+
+/* Section Headers */
+.creating h2, .resources h2 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+.resources h2 {
+    position: absolute;
+    top: 0;
+}
+
+/* Project Title and Description */
+.project-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.project-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+/* Resource Title and Description */
+.resource-title {
+    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
-.external-link {
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
+.resource-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
-.external-link:hover {
-    opacity: 1;
+/* Newsletter Section */
+.newsletter {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--border-color);
 }
 
 /* Newsletter Form */
@@ -286,9 +316,69 @@ footer a:hover {
 }
 
 /* Responsive Design */
+@media (max-width: 1400px) {
+    .container {
+        padding: 3rem 3rem;
+    }
+    .two-column-layout {
+        grid-template-columns: 2fr 1fr;
+        padding: 0 3rem;
+        gap: 4rem;
+        max-width: 1400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .projects-grid, .resources-grid {
+        gap: 2rem;
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 2rem 2rem;
+    }
+    .two-column-layout {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    
+    .resources-grid {
+        position: static;
+        padding-top: 0;
+    }
+    
+    .resources h2 {
+        position: static;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
-        padding: 2rem 1.25rem;
+        padding: 2rem 1.5rem;
+    }
+    .two-column-layout {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+    }
+    
+    .resources-grid {
+        position: static;
+    }
+
+    .projects-grid, .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .project-card, .resource-card {
+        padding: 1.75rem;
+    }
+
+    .newsletter {
+        padding: 2rem 1rem;
     }
 
     h1 {
@@ -298,15 +388,6 @@ footer a:hover {
     .bio {
         font-size: 1rem;
         padding: 0 1rem;
-    }
-
-    .projects-grid, .resources-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .project-card, .resource-card {
-        padding: 1.5rem;
     }
 
     .subscribe-form {
@@ -341,6 +422,20 @@ footer a:hover {
         align-items: center;
         justify-content: center;
     }
+
+    .nav-container {
+        gap: 1rem;
+        padding: 0 1rem;
+        justify-content: space-between;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+    }
+
+    .nav-link[href="essays.html"] {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -352,48 +447,23 @@ footer a:hover {
         width: 96px;
         height: 96px;
     }
+
+    .nav-container {
+        gap: 0.75rem;
+        padding: 0 0.75rem;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+        letter-spacing: -0.01em;
+    }
+
+    .nav-link[href="essays.html"] {
+        font-size: 0.75rem;
+    }
 }
 
 /* Project Cards */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-.project-card {
-    padding: 2rem;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background-color: var(--background-color);
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.project-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-}
-
-.project-description {
-    color: var(--secondary-color);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-}
-
 .project-link {
     display: inline-flex;
     align-items: center;
@@ -416,21 +486,6 @@ footer a:hover {
 
 .project-link:hover::after {
     transform: translateX(4px);
-}
-
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .project-card {
-        padding: 1.5rem;
-    }
-
-    .project-title {
-        font-size: 1.2rem;
-    }
 }
 
 .project-header {
@@ -566,32 +621,9 @@ footer a:hover {
 }
 
 /* Resource Cards - Distinct Style */
-.resources-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.resource-card {
-    padding: 1.75rem;
-    background-color: var(--subtle-bg);
-    border: none;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-}
-
 .resource-card:hover {
     background-color: #E3F0FF;
-    transform: translateX(4px);
+    transform: translateX(8px);
     box-shadow: 0 4px 12px rgba(0, 102, 255, 0.08);
 }
 
@@ -606,22 +638,6 @@ footer a:hover {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-}
-
-.resource-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0;
-    color: var(--primary-color);
-    transition: color 0.3s ease;
-}
-
-.resource-description {
-    color: var(--secondary-color);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-    transition: color 0.3s ease;
 }
 
 .resource-card .project-icon {
@@ -649,16 +665,6 @@ footer a:hover {
 
 .resource-card:hover .project-link::after {
     transform: translateX(4px);
-}
-
-@media (max-width: 768px) {
-    .resources-grid {
-        padding: 0 1rem;
-    }
-    
-    .resource-card {
-        padding: 1.5rem;
-    }
 }
 
 /* Meditations Page Styles */
