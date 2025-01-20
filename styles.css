@@ -367,7 +367,7 @@ footer a:hover {
 
 @media (max-width: 768px) {
     .container {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1rem;
     }
     .two-column-layout {
         grid-template-columns: 1fr;
@@ -392,15 +392,31 @@ footer a:hover {
         padding: 2rem 1rem;
     }
 
+    header {
+        margin: 2rem auto 4rem;
+        padding: 0;
+        width: 100%;
+    }
+
     h1 {
-        font-size: 1.75rem;
+        font-size: 1.6rem;
+        padding: 0;
+        margin-bottom: 1.25rem;
+        width: 100%;
     }
 
     .bio {
-        font-size: 0.95rem;
-        padding: 0 1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 0;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        max-width: none;
+    }
+
+    .profile {
+        width: 100%;
+        padding: 0 0.75rem;
     }
 
     .subscribe-form {
@@ -464,12 +480,15 @@ footer a:hover {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     .bio {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         line-height: 1.5;
+    }
+
+    .profile {
         padding: 0 0.5rem;
     }
 
