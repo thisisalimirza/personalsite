@@ -567,10 +567,13 @@ footer a:hover {
 
 /* Resource Cards - Distinct Style */
 .resources-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
     margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .resource-card {
@@ -582,11 +585,13 @@ footer a:hover {
     position: relative;
     cursor: pointer;
     box-shadow: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .resource-card:hover {
     background-color: #E3F0FF;
-    transform: translateY(-2px);
+    transform: translateX(4px);
     box-shadow: 0 4px 12px rgba(0, 102, 255, 0.08);
 }
 
@@ -648,7 +653,7 @@ footer a:hover {
 
 @media (max-width: 768px) {
     .resources-grid {
-        grid-template-columns: 1fr;
+        padding: 0 1rem;
     }
     
     .resource-card {
