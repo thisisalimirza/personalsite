@@ -222,7 +222,7 @@ h2 {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     border-top: 1px solid var(--border-color);
 }
 
@@ -267,20 +267,31 @@ button:hover {
 /* Social Links */
 .social-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     justify-content: center;
+    margin: 1rem 0 3rem;
 }
 
 .social-links a {
     color: var(--secondary-color);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.5rem;
     transition: all 0.2s ease;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--border-color);
 }
 
 .social-links a:hover {
-    color: var(--accent-color);
-    transform: translateY(-1px);
+    color: white;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -382,12 +393,14 @@ footer a:hover {
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .bio {
-        font-size: 1rem;
+        font-size: 0.95rem;
         padding: 0 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
     }
 
     .subscribe-form {
@@ -436,11 +449,28 @@ footer a:hover {
     .nav-link[href="essays.html"] {
         font-size: 0.8rem;
     }
+
+    .social-links {
+        gap: 1.5rem;
+        margin: 1rem 0 2.5rem;
+    }
+
+    .social-links a {
+        font-size: 1.25rem;
+        width: 42px;
+        height: 42px;
+    }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.75rem;
+        font-size: 1.6rem;
+    }
+
+    .bio {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 0 0.5rem;
     }
 
     .profile-img {
@@ -1041,8 +1071,8 @@ body.essays-page {
 .antibalance {
     color: var(--secondary-color);
     font-size: 1.1rem;
-    margin-top: -1rem;
-    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
 }
 
 .antibalance-button {
@@ -1077,6 +1107,7 @@ body.essays-page {
 @media (max-width: 768px) {
     .antibalance {
         font-size: 1rem;
-        margin-top: -0.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 2.5rem;
     }
 } 
