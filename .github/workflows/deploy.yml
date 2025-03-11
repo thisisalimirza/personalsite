@@ -21,7 +21,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          server-dir: /public_html/
+          server-dir: public_html/
+          local-dir: ./
           dangerous-clean-slate: false
           exclude: |
             **/.git*
@@ -30,4 +31,5 @@ jobs:
             README.md
             .env
             .env.*
-            .gitignore 
+            .gitignore
+            .sync-state.json 
