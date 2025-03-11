@@ -1,9 +1,15 @@
 <?php
 session_start();
-define('ADMIN_USERNAME', 'alimirza'); // Changed to your name for better security
-define('ADMIN_PASSWORD_HASH', password_hash('REPLACE_WITH_A_STRONG_PASSWORD', PASSWORD_DEFAULT)); // You'll need to change this password
+define('ADMIN_USERNAME', 'alimirza');
+define('ADMIN_PASSWORD_HASH', password_hash('REPLACE_WITH_A_STRONG_PASSWORD', PASSWORD_DEFAULT));
 define('POSTS_DIR', __DIR__ . '/../content/posts/');
-define('SITE_URL', 'https://' . $_SERVER['HTTP_HOST']); // Automatically detect the domain
+define('SITE_URL', 'https://thisisalimirza.com');
+define('ADMIN_URL', 'https://thisisalimirza.com/admin');
+
+// GitHub API configuration
+define('GITHUB_TOKEN', ''); // You'll add this through Hostinger's file manager
+define('GITHUB_REPO', 'thisisalimirza/personal_website');
+define('GITHUB_BRANCH', 'main');
 
 // Security headers
 header("X-Frame-Options: DENY");
@@ -32,6 +38,53 @@ function generateSlug($title) {
     $slug = preg_replace('/-+/', '-', $slug);
     $slug = trim($slug, '-');
     return $slug;
+}
+
+// Function to push changes to GitHub
+function pushToGitHub($file, $content, $message) {
+    if (empty(GITHUB_TOKEN)) return false;
+    
+    $url = "https://api.github.com/repos/" . GITHUB_REPO . "/contents/" . $file;
+    
+    // Get the current file (if it exists) to get its SHA
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Accept: application/vnd.github.v3+json',
+        'Authorization: token ' . GITHUB_TOKEN,
+        'User-Agent: PHP'
+    ]);
+    $result = curl_exec($ch);
+    $fileInfo = json_decode($result, true);
+    curl_close($ch);
+    
+    // Prepare the update data
+    $data = [
+        'message' => $message,
+        'content' => base64_encode($content),
+        'branch' => GITHUB_BRANCH
+    ];
+    
+    if (isset($fileInfo['sha'])) {
+        $data['sha'] = $fileInfo['sha'];
+    }
+    
+    // Update or create the file
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Accept: application/vnd.github.v3+json',
+        'Authorization: token ' . GITHUB_TOKEN,
+        'User-Agent: PHP'
+    ]);
+    
+    $result = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    return $httpCode >= 200 && $httpCode < 300;
 }
 
 // Ensure posts directory exists

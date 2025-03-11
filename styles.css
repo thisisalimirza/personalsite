@@ -903,90 +903,97 @@ body.essays-page {
 }
 
 .essays-list {
-    max-width: 650px;
-    margin: 0.5rem auto;
-    padding: 0 1.5rem;
-    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
 }
 
-.essay-entry {
-    padding: 0.6rem 0;
-    position: relative;
-    transition: all 0.2s ease;
-    border-bottom: 1px solid var(--border-color);
+.essay-preview {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
 }
 
-.essay-entry:last-child {
+.essay-preview:last-child {
     border-bottom: none;
 }
 
-.essay-entry .essay-title {
-    color: var(--primary-color);
+.essay-preview h2 {
+    margin: 0 0 0.5rem;
+}
+
+.essay-preview h2 a {
+    color: #333;
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 450;
-    line-height: 1.5;
-    transition: all 0.2s ease;
-    display: block;
-    padding: 0.25rem 0;
+    transition: color 0.2s;
 }
 
-.essay-entry::before {
-    content: '';
-    position: absolute;
-    left: -1.5rem;
-    top: 50%;
-    width: 3px;
-    height: 3px;
-    background-color: var(--border-color);
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: all 0.2s ease;
+.essay-preview h2 a:hover {
+    color: #007bff;
 }
 
-.essay-entry:hover::before {
-    background-color: var(--accent-color);
-    transform: translateY(-50%) scale(1.5);
+.essay-meta {
+    color: #666;
+    font-size: 0.9rem;
 }
 
-.essay-entry:hover .essay-title {
-    color: var(--accent-color);
-    transform: translateX(8px);
+/* Individual Post */
+.post {
+    max-width: 800px;
+    margin: 2rem auto;
 }
 
-.essays-page .page-header {
-    text-align: center;
-    margin: 3rem auto 2rem;
-    max-width: 650px;
-    padding: 0 1.5rem;
+.post-meta {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
 }
 
-.essays-page .page-header h1 {
-    color: var(--primary-color);
-    font-size: 2.75rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-}
-
-.essays-page .page-header p {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
+.post-content {
     line-height: 1.6;
-    max-width: 480px;
-    margin: 0 auto;
-    opacity: 0.9;
 }
 
-.featured-link {
-    color: var(--accent-color);
+.post-content h2 {
+    margin-top: 2rem;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.post-content code {
+    background: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.post-content pre code {
+    display: block;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.post-navigation {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.back-to-essays {
+    color: #007bff;
     text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.2s ease;
+    transition: color 0.2s;
 }
 
-.featured-link:hover {
-    opacity: 0.8;
+.back-to-essays:hover {
+    color: #0056b3;
 }
 
 /* Essay Page Styles */

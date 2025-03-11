@@ -1,40 +1,5 @@
 <?php
 require_once 'includes/config.php';
-
-// Get list of posts
-$posts = [];
-if (is_dir(POSTS_DIR)) {
-    $files = glob(POSTS_DIR . '*.md');
-    foreach ($files as $file) {
-        $content = file_get_contents($file);
-        preg_match('/^---\s*\n(.*?)\n---\s*\n(.*)/s', $content, $matches);
-        
-        if (count($matches) >= 3) {
-            $frontMatter = [];
-            foreach (explode("\n", $matches[1]) as $line) {
-                if (strpos($line, ':') !== false) {
-                    list($key, $value) = explode(':', $line, 2);
-                    $frontMatter[trim($key)] = trim($value);
-                }
-            }
-            
-            // Get excerpt (first 200 characters)
-            $excerpt = substr(strip_tags($matches[2]), 0, 200) . '...';
-            
-            $posts[] = [
-                'title' => $frontMatter['title'] ?? basename($file, '.md'),
-                'date' => $frontMatter['date'] ?? 'Unknown',
-                'slug' => $frontMatter['slug'] ?? basename($file, '.md'),
-                'excerpt' => $excerpt
-            ];
-        }
-    }
-}
-
-// Sort posts by date (newest first)
-usort($posts, function($a, $b) {
-    return strtotime($b['date']) - strtotime($a['date']);
-});
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,24 +61,42 @@ usort($posts, function($a, $b) {
             <a href="essays.php" class="nav-link active">Thoughts & Essays</a>
         </div>
     </nav>
-
-    <div class="essays-container">
+    
+    <div class="container">
         <h1>Thoughts & Essays</h1>
-        
-        <?php if (empty($posts)): ?>
-            <p>No essays published yet.</p>
-        <?php else: ?>
-            <?php foreach ($posts as $post): ?>
-                <article class="essay-card">
-                    <h2 class="essay-title"><?php echo htmlspecialchars($post['title']); ?></h2>
-                    <div class="essay-date"><?php echo htmlspecialchars($post['date']); ?></div>
-                    <p class="essay-excerpt"><?php echo htmlspecialchars($post['excerpt']); ?></p>
-                    <a href="essays/<?php echo htmlspecialchars($post['slug']); ?>.html" class="read-more">
-                        Read more →
-                    </a>
-                </article>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <div class="essays-list">
+            <?php
+            // Get all posts
+            $posts = glob(POSTS_DIR . '*.md');
+            
+            if (empty($posts)) {
+                echo '<p>No essays published yet.</p>';
+            } else {
+                // Sort posts by date (newest first)
+                usort($posts, function($a, $b) {
+                    return filemtime($b) - filemtime($a);
+                });
+                
+                foreach ($posts as $post) {
+                    $content = file_get_contents($post);
+                    $filename = basename($post, '.md');
+                    
+                    // Extract title and date from the first line (assuming it's in the format: # Title)
+                    $lines = explode("\n", $content);
+                    $title = trim(str_replace('#', '', $lines[0]));
+                    $date = date('F j, Y', filemtime($post));
+                    
+                    // Get the slug (remove date prefix if it exists)
+                    $slug = preg_replace('/^\d{4}-\d{2}-\d{2}-/', '', $filename);
+                    
+                    echo '<article class="essay-preview">';
+                    echo '<h2><a href="essays/' . htmlspecialchars($slug) . '.html">' . htmlspecialchars($title) . '</a></h2>';
+                    echo '<div class="essay-meta">' . htmlspecialchars($date) . '</div>';
+                    echo '</article>';
+                }
+            }
+            ?>
+        </div>
     </div>
 
     <footer>
