@@ -156,6 +156,7 @@ h2 {
     box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .project-card:hover, .resource-card:hover {
@@ -513,7 +514,19 @@ footer a:hover {
 }
 
 /* Project Cards */
+.card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
 .project-link {
+    position: relative;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     color: var(--accent-color);
